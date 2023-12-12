@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public GameObject gameOverText;
     public bool gameOver = false;
+    public float scrollspeed = -1.5f;
 
     // Start is called before the first frame update
     void Awake()
