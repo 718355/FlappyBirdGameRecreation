@@ -16,6 +16,9 @@ public class GameController : MonoBehaviour
 
     private int score = 0;
 
+    AudioSource audioSource;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +30,9 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -36,6 +42,12 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
     public void BirdScored()
     {
@@ -45,11 +57,16 @@ public class GameController : MonoBehaviour
         }
         score++;
         scoreText.text = "Score: " + score.ToString();
+
+
+
     }
 
     public void BirdDied()
     {
         gameOverText.SetActive(true);
         gameOver = true;
+
     }
+    
 }
